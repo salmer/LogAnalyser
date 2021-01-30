@@ -35,6 +35,14 @@ TEST(LogReaderTests, Log_reader_can_read_logs)
 	readerTest.OpenFile(testFilePath);
 	const auto acquiredData{readerTest.ReadData()};
 	ASSERT_FALSE(acquiredData.empty());
+
+	for (const auto& data : acquiredData)
+	{
+		ASSERT_GE(data.ts_fact, static_cast<uint32_t>(0));
+		ASSERT_GE(data.actor_id, static_cast<uint32_t>(0));
+		ASSERT_FALSE(data.fact_name.empty());
+		ASSERT_FALSE(data.props.empty());
+	}
 }
 
 }}

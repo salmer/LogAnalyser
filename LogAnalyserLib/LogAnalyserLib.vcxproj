@@ -168,12 +168,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\shared\include\LogAnalyserLib\LogAnalyserLib.h" />
+    <ClInclude Include="CommandLineParser.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="LogReader.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlayerActionInfo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CommandLineParser.cpp" />
     <ClCompile Include="LogReader.cpp" />
     <ClCompile Include="LogAnalyserLib.cpp" />
     <ClCompile Include="pch.cpp">
