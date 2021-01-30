@@ -2,12 +2,24 @@
 
 namespace LogAnalyserLib {
 
+using PropsList = std::map<std::string, uint32_t>;
+
+
 struct PlayerActionInfo
 {
 	uint32_t ts_fact;
-	uint32_t actor_id;
 	std::string fact_name;
-	std::map<std::string, uint32_t> props;
+	PropsList props;
 };
+
+struct AggregatedActionData
+{
+	PlayerActionInfo info;
+	uint32_t eventCounter;
+};
+
+
+using PlayerActionInfoList = std::vector<PlayerActionInfo>;
+using AggregatedDataList = std::vector<AggregatedActionData>;
 
 }

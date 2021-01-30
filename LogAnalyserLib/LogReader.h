@@ -13,7 +13,7 @@ public:
 
 	void OpenFile(std::string_view filePath);
 	void CloseFile();
-	std::vector<PlayerActionInfo> ReadData();
+	PlayerActionInfoList ReadData();
 
 private:
 	std::ifstream logReader;

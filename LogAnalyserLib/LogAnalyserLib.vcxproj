@@ -169,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="..\shared\include\LogAnalyserLib\LogAnalyserLib.h" />
     <ClInclude Include="CommandLineParser.h" />
+    <ClInclude Include="PlayerInfoAnalyser.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="LogReader.h" />
     <ClInclude Include="pch.h" />
@@ -176,8 +177,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandLineParser.cpp" />
+    <ClCompile Include="PlayerInfoAnalyser.cpp" />
     <ClCompile Include="LogReader.cpp" />
-    <ClCompile Include="LogAnalyserLib.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -7,9 +7,8 @@ namespace LogAnalyserLib {
 PlayerActionInfo GetPlayerActionInfoFromJson(nlohmann::json&& rawData)
 {
 	return {rawData["ts_fact"].get<uint32_t>(),
-		rawData["actor_id"].get<uint32_t>(),
 		rawData["fact_name"].get<std::string>(),
-		rawData["props"].get<std::map<std::string, uint32_t>>()};
+		rawData["props"].get<PropsList>()};
 }
 
 
@@ -36,9 +35,9 @@ void LogReader::CloseFile()
 	}
 }
 
-std::vector<PlayerActionInfo> LogReader::ReadData()
+PlayerActionInfoList LogReader::ReadData()
 {
-	std::vector<PlayerActionInfo> listOfData;
+	PlayerActionInfoList listOfData;
 	std::string lineBuffer;
 
 	while (!logReader.eof())

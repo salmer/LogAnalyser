@@ -39,7 +39,6 @@ TEST(LogReaderTests, Log_reader_can_read_logs)
 	for (const auto& data : acquiredData)
 	{
 		ASSERT_GE(data.ts_fact, static_cast<uint32_t>(0));
-		ASSERT_GE(data.actor_id, static_cast<uint32_t>(0));
 		ASSERT_FALSE(data.fact_name.empty());
 		ASSERT_FALSE(data.props.empty());
 	}
