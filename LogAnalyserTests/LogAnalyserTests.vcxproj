@@ -34,9 +34,11 @@
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="TestData.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandLineParserTests.cpp" />
+    <ClCompile Include="DataMergerTests.cpp" />
     <ClCompile Include="PlayerInfoAnalyserTests.cpp" />
     <ClCompile Include="LogReaderTests.cpp" />
     <ClCompile Include="pch.cpp">

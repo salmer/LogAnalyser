@@ -4,7 +4,6 @@ namespace LogAnalyserLib {
 
 using PropsList = std::map<std::string, uint32_t>;
 
-
 struct PlayerActionInfo
 {
 	uint32_t ts_fact;
@@ -20,6 +19,8 @@ struct AggregatedActionData
 
 
 using PlayerActionInfoList = std::vector<PlayerActionInfo>;
+
 using AggregatedDataList = std::vector<AggregatedActionData>;
+AggregatedDataList::iterator FindElement(AggregatedDataList& aggregatedDataList, const PlayerActionInfo& playerInfo);
 
 }

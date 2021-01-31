@@ -169,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="..\shared\include\LogAnalyserLib\LogAnalyserLib.h" />
     <ClInclude Include="CommandLineParser.h" />
+    <ClInclude Include="DataMerger.h" />
     <ClInclude Include="PlayerInfoAnalyser.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="LogReader.h" />
@@ -177,6 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandLineParser.cpp" />
+    <ClCompile Include="DataMerger.cpp" />
+    <ClCompile Include="PlayerActionInfo.cpp" />
     <ClCompile Include="PlayerInfoAnalyser.cpp" />
     <ClCompile Include="LogReader.cpp" />
     <ClCompile Include="pch.cpp">

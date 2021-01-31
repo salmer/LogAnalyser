@@ -4,4 +4,6 @@
 #include "..\..\LogAnalyserLib\CommandLineParser.h"
 #include "..\..\LogAnalyserLib\PlayerActionInfo.h"
 #include "..\..\LogAnalyserLib\PlayerInfoAnalyser.h"
+#include "..\..\LogAnalyserLib\DataMerger.h"
+
 #pragma comment(lib, "LogAnalyserLib.lib")
