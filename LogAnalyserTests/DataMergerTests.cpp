@@ -4,7 +4,7 @@
 
 namespace LogAnalyserLib { namespace Testing {
 
-TEST(DataMergerTests, Merger_can_aggregate_data_collection)
+TEST(DataMergerTests, Merger_can_aggregate_sorted_data_collection_by_timestamp)
 {
 	AggregatedDataList testList{{firstTestInfo, 10}, {secondTestInfo, 4}, {thirdTestInfo, 7}, {fourthTestInfo, 14}, {fifthTestInfo, 35}};
 	DataMerger merger;
@@ -18,10 +18,11 @@ TEST(DataMergerTests, Merger_can_aggregate_data_collection)
 	const auto agrCollection{merger.GetMergedDataCollection()};
 	ASSERT_EQ(agrCollection.size(), testList.size());
 	
-	for (size_t i = 0; i < agrCollection.size(); ++i)
-	{
-		ASSERT_EQ(agrCollection[i].eventCounter, testList[i].eventCounter * countDataAdded);
-	}
+	ASSERT_EQ(agrCollection[0].eventCounter, testList[0].eventCounter * countDataAdded);
+	ASSERT_EQ(agrCollection[1].eventCounter, testList[1].eventCounter * countDataAdded);
+	ASSERT_EQ(agrCollection[2].eventCounter, testList[4].eventCounter * countDataAdded);
+	ASSERT_EQ(agrCollection[3].eventCounter, testList[2].eventCounter * countDataAdded);
+	ASSERT_EQ(agrCollection[4].eventCounter, testList[3].eventCounter * countDataAdded);
 }
 
 }}

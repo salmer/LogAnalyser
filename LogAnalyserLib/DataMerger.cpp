@@ -44,6 +44,12 @@ void DataMerger::StartMergeTask()
 const AggregatedDataList& DataMerger::GetMergedDataCollection()
 {
 	WaitTaskIsFinished();
+
+	std::sort(aggregatedCollection.begin(), aggregatedCollection.end(), [](const auto& first, const auto& second)
+	{
+		return first.info.ts_fact < second.info.ts_fact;
+	});
+
 	return aggregatedCollection;
 }
 
