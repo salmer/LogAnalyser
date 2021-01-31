@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandLineParserTests.cpp" />
+    <ClCompile Include="ResultWriterTests.cpp" />
     <ClCompile Include="DataMergerTests.cpp" />
     <ClCompile Include="PlayerInfoAnalyserTests.cpp" />
     <ClCompile Include="LogReaderTests.cpp" />

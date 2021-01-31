@@ -5,5 +5,6 @@
 #include "..\..\LogAnalyserLib\PlayerActionInfo.h"
 #include "..\..\LogAnalyserLib\PlayerInfoAnalyser.h"
 #include "..\..\LogAnalyserLib\DataMerger.h"
+#include "..\..\LogAnalyserLib\ResultWriter.h"
 
 #pragma comment(lib, "LogAnalyserLib.lib")

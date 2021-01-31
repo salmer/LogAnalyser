@@ -5,6 +5,17 @@
 
 namespace LogAnalyserLib {
 
+std::ostream& operator<< (std::ostream& os, const PropsList& props)
+{
+	os << "props:";
+	for (const auto& elem : props)
+	{
+		os << " " << elem.first << ": " << elem.second;
+	}
+
+	return os;
+}
+
 bool operator==(const PlayerActionInfo& first, const PlayerActionInfo& second)
 {
 	return first.ts_fact == second.ts_fact

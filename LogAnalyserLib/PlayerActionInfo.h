@@ -1,8 +1,11 @@
 #pragma once
 
+#include <ostream>
+
 namespace LogAnalyserLib {
 
 using PropsList = std::map<std::string, uint32_t>;
+std::ostream& operator<< (std::ostream& os, const PropsList& props);
 
 struct PlayerActionInfo
 {
