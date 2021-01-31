@@ -1,6 +1,8 @@
 #pragma once
 
 #include <ostream>
+#include <map>
+#include <vector>
 
 namespace LogAnalyserLib {
 
