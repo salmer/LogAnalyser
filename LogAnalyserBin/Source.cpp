@@ -7,6 +7,7 @@ using namespace LogAnalyserLib;
 
 void DoAggregationTask(DataMerger& merger, std::string_view filePath)
 {
+	ConsoleAppLogger::LogMessage("Analyzing a file: {}...", filePath);
 	LogReader reader;
 	reader.OpenFile(filePath);
 	merger.AddDataToMerge(PlayerInfoAnalyser::AggregateData(reader.ReadData()));
@@ -18,6 +19,8 @@ void ExecuteTasks(CommandLineParser& parser, DataMerger& merger)
 	const auto workDirectory{parser.GetLogDirectory()};
 	const auto numberOfFiles{parser.GetNumberOfFilesInDirectory()};
 	const auto numberOfActiveThreads{parser.GetNumberOfThreads()};
+
+	ConsoleAppLogger::LogMessage("Executing tasks: working directory: '{}', number of files: {}, number of threads: {}", workDirectory, numberOfFiles, numberOfActiveThreads);
 
 	std::list<std::future<void>> taskList;
 	size_t numberOfAnalysedFiles{0};
@@ -46,7 +49,9 @@ void ExecuteTasks(CommandLineParser& parser, DataMerger& merger)
 }
 
 int main(int argc, char** argv)
+try
 {
+	ConsoleAppLogger::LogMessage("Starting the log analyser...");
 	CommandLineParser parser;
 	DataMerger merger;
 
@@ -58,5 +63,12 @@ int main(int argc, char** argv)
 	resultWriter.WriteDataToFile(merger.GetMergedDataCollection());
 	resultWriter.CloseFile();
 
+	ConsoleAppLogger::LogMessage("All task are completed. The application is finished.");
+
 	return 0;
+}
+catch (const std::exception& ex)
+{
+	ConsoleAppLogger::LogMessage("Error has been occured: '{}'", ex.what());
+	return -1;
 }
