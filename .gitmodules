@@ -1,6 +1,6 @@
-[submodule "json"]
-	path = json
-	url = https://github.com/nlohmann/json.git
 [submodule "fmt"]
 	path = fmt
 	url = https://github.com/fmtlib/fmt.git
+[submodule "rapidjson"]
+	path = rapidjson
+	url = https://github.com/Tencent/rapidjson.git

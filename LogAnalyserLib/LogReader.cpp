@@ -2,29 +2,29 @@
 #include "LogReader.h"
 #include <string>
 
+#include <rapidjson\document.h>
+#include <rapidjson\pointer.h>
+#include <rapidjson\filereadstream.h>
+
 namespace LogAnalyserLib {
 
-PlayerActionInfo GetPlayerActionInfoFromJson(nlohmann::json&& rawData)
+PlayerActionInfo GetPlayerActionInfoFromJson(const rapidjson::Document& data)
 {
-	PlayerActionInfo actionInfo;
-	actionInfo.ts_fact = rawData["ts_fact"].get<uint32_t>();
-	actionInfo.fact_name = rawData["fact_name"].get<std::string>();
-	actionInfo.props.resize(10);
-	actionInfo.props =
-	{
-		rawData["props"]["prop1"].get<uint32_t>(),
-		rawData["props"]["prop2"].get<uint32_t>(),
-		rawData["props"]["prop3"].get<uint32_t>(),
-		rawData["props"]["prop4"].get<uint32_t>(),
-		rawData["props"]["prop5"].get<uint32_t>(),
-		rawData["props"]["prop6"].get<uint32_t>(),
-		rawData["props"]["prop7"].get<uint32_t>(),
-		rawData["props"]["prop8"].get<uint32_t>(),
-		rawData["props"]["prop9"].get<uint32_t>(),
-		rawData["props"]["prop10"].get<uint32_t>(),
+	return {data["ts_fact"].GetUint(),
+		data["fact_name"].GetString(),
+		{
+			data["props"]["prop1"].GetUint(),
+			data["props"]["prop2"].GetUint(),
+			data["props"]["prop3"].GetUint(),
+			data["props"]["prop4"].GetUint(),
+			data["props"]["prop5"].GetUint(),
+			data["props"]["prop6"].GetUint(),
+			data["props"]["prop7"].GetUint(),
+			data["props"]["prop8"].GetUint(),
+			data["props"]["prop9"].GetUint(),
+			data["props"]["prop10"].GetUint()
+	}
 	};
-
-	return actionInfo;
 }
 
 LogReader::~LogReader()
@@ -64,8 +64,9 @@ PlayerActionInfoList LogReader::ReadData()
 			continue;
 		}
 
-		const auto aggreagatedPlayerInfo{GetPlayerActionInfoFromJson(nlohmann::json::parse(lineBuffer))};
-		listOfData.emplace_back(aggreagatedPlayerInfo);
+		rapidjson::Document data;
+		data.Parse(lineBuffer.c_str());
+		listOfData.emplace_back(GetPlayerActionInfoFromJson(data));
 	}
 
 	return listOfData;

@@ -9,7 +9,6 @@
 
 // add headers that you want to pre-compile here
 #include "framework.h"
-#include <nlohmann/json.hpp>
 #include <memory>
 #include <vector>
 #include <string>
