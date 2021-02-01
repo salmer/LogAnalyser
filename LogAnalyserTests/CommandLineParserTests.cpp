@@ -64,4 +64,22 @@ TEST(CommandLineParserTests, Parser_throws_an_exception_if_cmd_arguments_are_set
 	ASSERT_THROW(parser.Parse(arraySize, testData), std::runtime_error);
 }
 
+TEST(CommandLineParserTests, Parser_throws_an_exception_if_number_of_files_is_negative)
+{
+	constexpr int arraySize{7};
+	char* testData[arraySize]{"testLocation\\test", "-d", "test\\logs", "-n", "-100", "-t", "10"};
+
+	CommandLineParser parser;
+	ASSERT_THROW(parser.Parse(arraySize, testData), std::runtime_error);
+}
+
+TEST(CommandLineParserTests, Parser_throws_an_exception_if_number_of_threads_is_negative)
+{
+	constexpr int arraySize{7};
+	char* testData[arraySize]{"testLocation\\test", "-d", "test\\logs", "-n", "100", "-t", "-10"};
+
+	CommandLineParser parser;
+	ASSERT_THROW(parser.Parse(arraySize, testData), std::runtime_error);
+}
+
 }}

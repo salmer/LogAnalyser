@@ -19,7 +19,8 @@ private:
 	void ValidateInputParams(int argc) const;
 	void ParseCommandLine(int argc, char** argv);
 	void HandleArgument(int index, char** argv);
-	void ValidateMandatoryParameters();
+	size_t ParseNumber(const char* strArg) const;
+	void ValidateMandatoryParameters() const;
 
 	std::string logDirectory;
 	size_t numberOfFiles;

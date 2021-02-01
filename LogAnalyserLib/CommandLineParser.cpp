@@ -63,10 +63,10 @@ void CommandLineParser::HandleArgument(const int index, char** argv)
 		logDirectory = argValue;
 		break;
 	case CommandLineArguments::NumberOfFiles:
-		numberOfFiles = std::stoi(argValue);
+		numberOfFiles = ParseNumber(argValue);
 		break;
 	case CommandLineArguments::NumberOfThreads:
-		numberOfThreads = std::stoi(argValue);
+		numberOfThreads = ParseNumber(argValue);
 		break;
 
 	default:
@@ -74,7 +74,18 @@ void CommandLineParser::HandleArgument(const int index, char** argv)
 	}
 }
 
-void CommandLineParser::ValidateMandatoryParameters()
+size_t CommandLineParser::ParseNumber(const char* strArg) const
+{
+	const auto number{std::stoi(strArg)};
+	if (number < 0)
+	{
+		throw std::runtime_error("Error: Negative number was set: value < 0");
+	}
+
+	return number;
+}
+
+void CommandLineParser::ValidateMandatoryParameters() const
 {
 	if (logDirectory.empty())
 	{
