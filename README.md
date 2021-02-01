@@ -10,6 +10,7 @@ This is an application that I implemented as a test task during the interviewing
 - [Project structure](#project-structure)
 - [Execution manual](#execution-manual)
 - [Exception handling](#exception-handling)
+- [Performance metrics](#performance-metrics)
 
 ## Problem statement
 
@@ -48,7 +49,9 @@ Description:
 - It must be possible to configure execution parameters via the command line:
   - The logs directory;
   - The number of files in the directory;
-  - The number of threads running at the same time.
+  - The number of threads running at the same time;
+- It must be written in C++ (avoid C-style);
+- The key points is performance.
 
 
 ## Output requirements
@@ -101,3 +104,24 @@ Description:
 
 - The application based on the exception mechanism. In case of any issues, an exception will be thrown and the application will be aborted. The description of an exception can be found in the command line window.
 - The application returns **0** in case of a successful run otherwise it returns **-1**.
+
+
+## Performance metrics
+
+The application was tested with the next hardware set:
+- Core: Intel Core i5 9300H 2.40GHz;
+- RAM: 16Gb; 
+- OS: Microsoft Windows 10 20H2.
+
+The single file description:
+- Size: ~760Mb
+- Lines: > 4 millions.
+
+The data set contains 4 files. The test results can be found below:
+
+| JSON parser | Single file(1 thread) | All files (4threads)
+| ------ | ------ |  ------ |
+| nlohmann/json | ~35sec. | ~51sec. |
+| tencent/rapidjson | ~14sec. | ~25sec. |
+
+
