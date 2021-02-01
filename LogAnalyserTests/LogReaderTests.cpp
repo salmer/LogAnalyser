@@ -1,10 +1,13 @@
 #include "pch.h"
 #include "LogAnalyserLib\LogAnalyserLib.h"
 
-namespace LogAnalyserLib { namespace Testing { 
+namespace LogAnalyserLib { namespace Testing {
 
+#ifdef _WIN64
+constexpr std::string_view testFilePath{"..\\..\\testdata\\file1.log"};
+#else
 constexpr std::string_view testFilePath{"..\\testdata\\file1.log"};
-
+#endif
 TEST(LogReaderTests, Log_reader_can_be_created)
 {
 	LogAnalyserLib::LogReader readerTest;

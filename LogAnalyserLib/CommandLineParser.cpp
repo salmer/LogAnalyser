@@ -92,12 +92,12 @@ const std::string& CommandLineParser::GetLogDirectory() const
 	return logDirectory;
 }
 
-unsigned int CommandLineParser::GetNumberOfFilesInDirectory() const
+size_t CommandLineParser::GetNumberOfFilesInDirectory() const
 {
 	return numberOfFiles;
 }
 
-unsigned int CommandLineParser::GetNumberOfThreads() const
+size_t CommandLineParser::GetNumberOfThreads() const
 {
 	return numberOfThreads;
 }
