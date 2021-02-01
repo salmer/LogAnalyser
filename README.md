@@ -2,13 +2,14 @@
 
 This is an application that I implemented as a test task during the interviewing process in 2017. I rewrote it in 2021 to use it as a demo repository.
 
-## Table of contents:
+## Table of contents
 - [Problem statement](#problem-statement)
 - [Input data description](#input-data-description)
 - [Application requirements](#application-requirements)
 - [Output requirements](#output-requirements)
 - [Project structure](#project-structure)
 - [Execution manual](#execution-manual)
+- [Exception handling](#exception-handling)
 
 ## Problem statement
 
@@ -79,7 +80,8 @@ The solution contains 3 projects:
   - PlayerInfoAnalyser - analyses raw data grabbed from a single file;
   - ResultWriter - produces the output file and writes data to it.
 - **LogAnalyserTests** - contains a collection of unit-tests to test the funcional uints of the LogAnalyserLib;
-- **LogAnalyserBin** - contains a "glue-code" that implements the applictaion algorithm.
+- **LogAnalyserBin** - contains a "glue-code" that implements the applictaion algorithm;
+- **testdata** - contains test samples for the application.
 
 
 ## Execution manual
@@ -95,3 +97,7 @@ Description:
 | -n | The number of files in the directory |
 | -t | The number of active threads |
 
+## Exception handling
+
+- The application based on the exception mechanism. In case of any issues, an exception will be thrown and the application will be aborted. The description of an exception can be found in the command line window.
+- The application returns **0** in case of a successful run otherwise it returns **-1**.
