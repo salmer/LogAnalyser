@@ -28,7 +28,8 @@ void ExecuteTasks(CommandLineParser& parser, DataMerger& merger)
 
 	while (numberOfAnalysedFiles < numberOfFiles)
 	{
-		if (taskList.size() < numberOfActiveThreads)
+		if (taskList.size() < numberOfActiveThreads 
+			&& numberOfCurrentFile < numberOfFiles)
 		{
 			taskList.emplace_back(std::async(std::launch::async, DoAggregationTask, std::ref(merger), workDirectory + "\\file" + std::to_string(++numberOfCurrentFile) + ".log"));
 			continue;
