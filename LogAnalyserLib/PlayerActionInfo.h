@@ -1,12 +1,12 @@
 #pragma once
 
 #include <ostream>
-#include <map>
 #include <vector>
+#include <list>
 
 namespace LogAnalyserLib {
 
-using PropsList = std::map<std::string, uint32_t>;
+using PropsList = std::vector<uint32_t>;
 std::ostream& operator<< (std::ostream& os, const PropsList& props);
 
 struct PlayerActionInfo
@@ -23,9 +23,9 @@ struct AggregatedActionData
 };
 
 
-using PlayerActionInfoList = std::vector<PlayerActionInfo>;
+using PlayerActionInfoList = std::list<PlayerActionInfo>;
 
-using AggregatedDataList = std::vector<AggregatedActionData>;
+using AggregatedDataList = std::list<AggregatedActionData>;
 AggregatedDataList::iterator FindElement(AggregatedDataList& aggregatedDataList, const PlayerActionInfo& playerInfo);
 
 }

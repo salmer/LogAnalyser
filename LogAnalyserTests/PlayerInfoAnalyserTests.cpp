@@ -22,11 +22,13 @@ TEST(PlayerInfoAnalyserTests, Analyser_can_aggregate_input_data)
 
 	// Expected results of an aggregation.
  	ASSERT_EQ(aggregatedData.size(), 5);
-	ASSERT_EQ(aggregatedData[0].eventCounter, 4);
-	ASSERT_EQ(aggregatedData[1].eventCounter, 1);
-	ASSERT_EQ(aggregatedData[2].eventCounter, 1);
-	ASSERT_EQ(aggregatedData[3].eventCounter, 2);
-	ASSERT_EQ(aggregatedData[4].eventCounter, 3);
+
+	const auto iterBegin{aggregatedData.begin()};
+	ASSERT_EQ(iterBegin->eventCounter, 4);
+	ASSERT_EQ(std::next(iterBegin, 1)->eventCounter, 1);
+	ASSERT_EQ(std::next(iterBegin, 2)->eventCounter, 1);
+	ASSERT_EQ(std::next(iterBegin, 3)->eventCounter, 2);
+	ASSERT_EQ(std::next(iterBegin, 4)->eventCounter, 3);
 }
 
 }}

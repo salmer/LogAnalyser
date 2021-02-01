@@ -10,7 +10,7 @@ std::ostream& operator<< (std::ostream& os, const PropsList& props)
 	os << "props:";
 	for (const auto& elem : props)
 	{
-		os << " " << elem.first << ": " << elem.second;
+		os << " " << elem;
 	}
 
 	return os;

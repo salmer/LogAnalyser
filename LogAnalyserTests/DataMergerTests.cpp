@@ -17,12 +17,15 @@ TEST(DataMergerTests, Merger_can_aggregate_sorted_data_collection_by_timestamp)
 
 	const auto agrCollection{merger.GetMergedDataCollection()};
 	ASSERT_EQ(agrCollection.size(), testList.size());
+
+	const auto iterCollection{agrCollection.begin()};
+	const auto iterTestList{testList.begin()};
 	
-	ASSERT_EQ(agrCollection[0].eventCounter, testList[0].eventCounter * countDataAdded);
-	ASSERT_EQ(agrCollection[1].eventCounter, testList[1].eventCounter * countDataAdded);
-	ASSERT_EQ(agrCollection[2].eventCounter, testList[4].eventCounter * countDataAdded);
-	ASSERT_EQ(agrCollection[3].eventCounter, testList[2].eventCounter * countDataAdded);
-	ASSERT_EQ(agrCollection[4].eventCounter, testList[3].eventCounter * countDataAdded);
+	ASSERT_EQ(iterCollection->eventCounter, iterTestList->eventCounter * countDataAdded);
+	ASSERT_EQ(std::next(iterCollection, 1)->eventCounter, std::next(iterTestList, 1)->eventCounter * countDataAdded);
+	ASSERT_EQ(std::next(iterCollection, 2)->eventCounter, std::next(iterTestList, 4)->eventCounter * countDataAdded);
+	ASSERT_EQ(std::next(iterCollection, 3)->eventCounter, std::next(iterTestList, 2)->eventCounter * countDataAdded);
+	ASSERT_EQ(std::next(iterCollection, 4)->eventCounter, std::next(iterTestList, 3)->eventCounter * countDataAdded);
 }
 
 }}

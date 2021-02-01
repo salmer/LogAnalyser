@@ -6,11 +6,26 @@ namespace LogAnalyserLib {
 
 PlayerActionInfo GetPlayerActionInfoFromJson(nlohmann::json&& rawData)
 {
-	return {rawData["ts_fact"].get<uint32_t>(),
-		rawData["fact_name"].get<std::string>(),
-		rawData["props"].get<PropsList>()};
-}
+	PlayerActionInfo actionInfo;
+	actionInfo.ts_fact = rawData["ts_fact"].get<uint32_t>();
+	actionInfo.fact_name = rawData["fact_name"].get<std::string>();
+	actionInfo.props.resize(10);
+	actionInfo.props =
+	{
+		rawData["props"]["prop1"].get<uint32_t>(),
+		rawData["props"]["prop2"].get<uint32_t>(),
+		rawData["props"]["prop3"].get<uint32_t>(),
+		rawData["props"]["prop4"].get<uint32_t>(),
+		rawData["props"]["prop5"].get<uint32_t>(),
+		rawData["props"]["prop6"].get<uint32_t>(),
+		rawData["props"]["prop7"].get<uint32_t>(),
+		rawData["props"]["prop8"].get<uint32_t>(),
+		rawData["props"]["prop9"].get<uint32_t>(),
+		rawData["props"]["prop10"].get<uint32_t>(),
+	};
 
+	return actionInfo;
+}
 
 LogReader::~LogReader()
 {
